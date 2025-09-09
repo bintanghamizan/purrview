@@ -2,7 +2,7 @@ import requests
 import os
 
 def download_images_from_api(search_query, download_path, per_page=10, total_images=30):
-    access_key = ''  # Change your Unsplash Access Key
+    access_key = 'Yv1BnsWVFpU0W3krw6dm2S8RM76ThToJWqJxF9PNMKI'  # Change your Unsplash Access Key
     total_downloaded = 0
     page = 1
 
@@ -18,7 +18,7 @@ def download_images_from_api(search_query, download_path, per_page=10, total_ima
             if total_downloaded >= total_images:
                 break
             img_url = photo['urls']['regular']
-            img_name = f"image_{total_downloaded + 1}.jpg"
+            img_name = f"cat_{total_downloaded + 1}.jpg"
             img_path = os.path.join(download_path, img_name)
             with open(img_path, 'wb') as img_file:
                 img_file.write(requests.get(img_url).content)
@@ -28,6 +28,6 @@ def download_images_from_api(search_query, download_path, per_page=10, total_ima
         page += 1
 
 if __name__ == "__main__":
-    search_query = "German Shepherd"
-    download_path = "German_Shepherd"
-    download_images_from_api(search_query, download_path, total_images=200)  # change total image of you want to download
+    search_query = "cat"
+    download_path = "cat"
+    download_images_from_api(search_query, download_path, total_images=30)  # change total image of you want to download
